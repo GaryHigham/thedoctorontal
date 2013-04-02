@@ -43,7 +43,7 @@ require('antie/php/antieframework.php');
 $javascript_cache_busting = true;
 
 // Set up application ID and path to framework configuration directory
-$application_id = "sampleapp";
+$application_id = "drontal";
 $antie_config_path = 'antie/config';
 
 // Create an AntieFramework instance
@@ -121,6 +121,7 @@ echo $antie->getRootHtmlTag($device_configuration_decoded);
 
     <!-- Load application base style sheet -->
     <link rel="stylesheet" href="static/style/base.css"/>
+    <link rel="stylesheet" href="static/style/cell.css"/>
 
     <!-- Expose device config to framework -->
     <script>
@@ -154,9 +155,9 @@ echo $antie->getRootHtmlTag($device_configuration_decoded);
 <script type='text/javascript'>
     require(
             [
-                'sampleapp/appui/sampleapp'
+                'drontal/drontal'
             ],
-            function(SampleApp) {
+            function(DrOnTAL) {
 
                 require.ready(function() {
                     function onReady() {
@@ -164,7 +165,7 @@ echo $antie->getRootHtmlTag($device_configuration_decoded);
                         staticLoadingScreen.parentNode.removeChild(staticLoadingScreen);
                     };
 
-                    new SampleApp(
+                    new DrOnTAL(
                             document.getElementById('app'),
                             'static/style/',
                             'static/img/',
