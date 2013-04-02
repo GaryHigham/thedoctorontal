@@ -1,0 +1,5 @@
+.cell{
+    border: solid red;
+    min-width: 32px;
+    min-height: 32px;
+}

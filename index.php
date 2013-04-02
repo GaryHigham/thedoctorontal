@@ -121,6 +121,7 @@ echo $antie->getRootHtmlTag($device_configuration_decoded);
 
     <!-- Load application base style sheet -->
     <link rel="stylesheet" href="static/style/base.css"/>
+    <link rel="stylesheet" href="static/style/cell.css"/>
 
     <!-- Expose device config to framework -->
     <script>
