@@ -1,0 +1,6 @@
+#statusbar span.statusbar-item {
+    width: 20%;
+    color: forestgreen;
+    float: left;
+    font-size: 20px;
+}
