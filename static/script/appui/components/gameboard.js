@@ -22,6 +22,19 @@ require.def("drontal/appui/components/gameboard",
                 }
 
                 self.appendChildWidget(self._horizontalList);
+
+                // Add a 'beforerender' event listener to the component to do anything specific that might need to be done
+                // before rendering the component
+                this.addEventListener("beforerender", function (evt) {
+                    self._onBeforeRender(evt);
+                });
+
+                // calls Application.ready() the first time the component is shown
+                // the callback removes itself once it's fired to avoid multiple calls.
+                this.addEventListener("aftershow", function appReady(evt) {
+                    self.getCurrentApplication().ready();
+                    self.removeEventListener('aftershow', appReady);
+                });
             },
 
             _createVerticalList: function(identifier){

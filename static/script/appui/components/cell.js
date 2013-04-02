@@ -1,10 +1,10 @@
 require.def('drontal/appui/components/cell',
     [
-        'antie/widgets/component'
+        'antie/widgets/button'
     ],
-    function(Component) {
+    function(Button) {
 
-        return Component.extend({
+        return Button.extend({
             init: function(identifier) {
                 var self;
                 self = this;

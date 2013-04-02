@@ -1,5 +1,17 @@
 .cell{
-    border: solid red;
     min-width: 32px;
     min-height: 32px;
+    max-width: 32px;
+    max-height: 32px;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+}
+.cell.buttonFocussed{
+    background-image: url('../img/core/tardisdr.png');
+    background-color: transparent;
+}
+
+.cell.button{
+
 }
