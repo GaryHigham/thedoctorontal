@@ -26,12 +26,7 @@ require.def("drontal/appui/components/mainmenu",
 
                 var playGameButton = new Button();
                 playGameButton.addEventListener("select", function(evt){
-                    // This broadcasts event that is only caught by listeners registered to the main menu
-                    //self.broadcastEvent(new AudioEvent("dalekgun"));
-
-                    // This broadcasts events 'globally'
-                    self.getCurrentApplication().bubbleEvent(new AudioEvent("exterminate"));
-
+                    self.getCurrentApplication().broadcastEvent(new AudioEvent("exterminate"));
                     self.getCurrentApplication().pushComponent("maincontainer", "drontal/appui/components/gamecanvas");
                 });
                 playGameButton.appendChildWidget(new Label("Play game"));
