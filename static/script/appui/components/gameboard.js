@@ -3,9 +3,10 @@ require.def("drontal/appui/components/gameboard",
         "antie/widgets/component",
         "antie/widgets/grid",
         "drontal/appui/components/cell",
-        'antie/events/keyevent'
+        'antie/events/keyevent',
+        "drontal/appui/components/dalekmanager"
     ],
-    function (Component, Grid, Cell, KeyEvent) {
+    function (Component, Grid, Cell, KeyEvent, DalekManager) {
 
         // All components extend Component
         return Grid.extend({
@@ -13,6 +14,7 @@ require.def("drontal/appui/components/gameboard",
                 var self = this;
                 this._oldCol = 0;
                 this._oldRow = 0;
+                this._dalekManager = null;
 
                 self._super("gameboard", 20, 20);
 
@@ -43,6 +45,11 @@ require.def("drontal/appui/components/gameboard",
                 this.addEventListener('select', function(e) { self._onSelectCell(e); });
             },
 
+            _registerDalekManager: function(dalekManger){
+                this._dalekManager = dalekManger;
+            },
+
+
             // Fired when 'Enter' or 'Select' is pushed
             _onSelectCell: function(evt){
                 // Removes Doctor image from old cell
@@ -55,7 +62,8 @@ require.def("drontal/appui/components/gameboard",
                 // Adds Doctor image to new cell
                 this.getWidgetAt(this._selectedCol, this._selectedRow).addClass("doctor");
 
-                alert("New Doctor position!");
+                //
+                this._dalekManager.updateDaleks(this._selectedCol,this._selectedRow);
             },
 
             // Overridden function to limit the directional choices a player can make
