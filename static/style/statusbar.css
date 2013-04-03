@@ -1,13 +1,14 @@
 #statusbar {
-    display: inline-block;
     background-color: palegreen;
-    padding: 15px;
+    display: inline-block;
+    padding: 5px;
+    width: 75%;
 }
 
 #statusbar span.statusbar-item {
     color: forestgreen;
     float: left;
-    padding-right: 40px;
+    width: 20%
 }
 
 #gameTitle {
@@ -15,6 +16,9 @@
 }
 
 #debugbar {
-    float: right;
+    display: inline-block;
     font-size: 12px;
+    margin: 0 5px;
+    vertical-align: top;
+    width: 20%;
 }

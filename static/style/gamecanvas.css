@@ -1,8 +1,15 @@
 #gamecanvas {
-    width: 960px;
+    width: 640px;
     margin: 0 auto;
 }
 
 #gameboard {
     background-image: url('../img/core/grid-bg-960.png');
+    background-size: 100% auto;
+    width: 640px;
+    height: 640px;
+}
+
+#gameboard .row {
+    height: 32px;
 }
