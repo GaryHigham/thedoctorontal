@@ -66,7 +66,7 @@ require.def("drontal/appui/components/dalekmanager",
             },
 
             updateDaleks: function(drCol, drRow) {
-                alert(this.dalekArray.toString());
+//                alert(this.dalekArray.toString());
                 for (var j=0 ; j < this.cols ; j++) {
                     for (var k = 0 ; k < this.rows ; k++) {
                         if(this.dalekArray[j][k]===this.DALEK){
