@@ -1,0 +1,8 @@
+#gamecanvas {
+    width: 960px;
+    margin: 0 auto;
+}
+
+#gamecanvas .component {
+    background-image: url('../img/core/grid-bg-960.png');
+}
