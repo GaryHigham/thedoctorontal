@@ -1,27 +1,24 @@
 require.def("drontal/appui/components/gameboard",
     [
         "antie/widgets/component",
-        "antie/widgets/horizontallist",
-        "antie/widgets/verticallist",
-        "drontal/appui/components/cell"
+        "antie/widgets/grid",
+        "drontal/appui/components/cell",
+        'antie/events/keyevent'
     ],
-    function (Component, HorizontalList, VerticalList, Cell) {
+    function (Component, Grid, Cell, KeyEvent) {
 
         // All components extend Component
-        return Component.extend({
+        return Grid.extend({
             init: function () {
                 var self = this;
 
-                // It is important to call the constructor of the superclass
-                self._super("gameboard");
+                self._super("gameboard", 30, 30);
 
-                self._horizontalList = new HorizontalList("horizontal");
-
-                for(var i = 0; i < 30; i++){
-                    self._horizontalList.appendChildWidget(this._createVerticalList("vertical" + i.toString()));
+                for(var i = 0; i < this._cols; i++){
+                    for(var j = 0; j < this._rows; j++){
+                        this.setWidgetAt(i, j, new Cell(""));
+                    }
                 }
-
-                self.appendChildWidget(self._horizontalList);
 
                 // Add a 'beforerender' event listener to the component to do anything specific that might need to be done
                 // before rendering the component
@@ -35,14 +32,7 @@ require.def("drontal/appui/components/gameboard",
                     self.getCurrentApplication().ready();
                     self.removeEventListener('aftershow', appReady);
                 });
-            },
 
-            _createVerticalList: function(identifier){
-                var list = new VerticalList(identifier);
-                for(var i = 0; i < 30; i++){
-                    list.appendChildWidget(new Cell(i.toString()));
-                }
-                return list;
             }
         });
     }
