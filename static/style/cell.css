@@ -25,6 +25,10 @@
     background-image: url('../img/core/dalekright.png');
 }
 
+.junk{
+    background-image: url('../img/core/dalekleft.png');
+}
+
 .void {
     background-image: url('../img/core/tardisdr.png');
 
