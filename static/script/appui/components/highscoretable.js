@@ -18,7 +18,11 @@ require.def('drontal/appui/components/highscoretable',
 
 
                 this.dummyAddScores();
-                var highScores = this.getHighScores(); 
+                var highScores = this.getHighScores();
+
+                highScores.sort(this.highScoreCompare);
+
+                var addedScores = 0;
                 for(var i =  0; i < highScores.length; ++i) {
                     var highScore = new HighScore(i);
                     highScore.setName(highScores[i].name);
@@ -26,6 +30,10 @@ require.def('drontal/appui/components/highscoretable',
                     highScore.setLevel(highScores[i].level);
 
                     this.appendChildWidget(highScore);
+
+                    if (++addedScores >= 5) {
+                        break;
+                    }
                 };
 
                 var self = this;
@@ -48,13 +56,25 @@ require.def('drontal/appui/components/highscoretable',
             dummyAddScores: function() {
                 var scores = new Array();
                 scores.push({name: 'Gary', score: '1000', level: '15'});
-                scores.push({name: 'Will', score: '1000', level: '15'});
-                scores.push({name: 'The Dr', score: '1000', level: '15'})
+                scores.push({name: 'Will', score: '2000', level: '15'});
+                scores.push({name: 'The Dr', score: '3000', level: '15'});
+                scores.push({name: 'The Dr', score: '4000', level: '16'});
+                scores.push({name: 'The Dr', score: '3500', level: '13'});
+                scores.push({name: 'The Dr', score: '2500', level: '12'});
 
                 var storage = this.getCurrentApplication().getDevice().getStorage(StorageProvider.STORAGE_TYPE_PERSISTENT, 'drontal');
                 storage.setItem('highScores', scores);
-            }
+            },
 
-        });     
+            highScoreCompare: function (a,b) {
+                if (a.score < b.score) {
+                    return 1;
+                }
+                if (a.score > b.score) {
+                    return -1;
+                }
+                return 0;
+            }
+        });
     }
 );
