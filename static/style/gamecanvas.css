@@ -3,6 +3,6 @@
     margin: 0 auto;
 }
 
-#gamecanvas .component {
+#gameboard {
     background-image: url('../img/core/grid-bg-960.png');
 }

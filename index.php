@@ -114,6 +114,11 @@ echo $antie->getRootHtmlTag($device_configuration_decoded);
             <?php endif; ?>
             callback: function() {}
         };
+
+        var debug = {
+            model: "<?php echo $device_model ?>",
+            brand: "<?php echo $device_brand ?>"
+        };
     </script>
 
     <!-- Load require.js -->
