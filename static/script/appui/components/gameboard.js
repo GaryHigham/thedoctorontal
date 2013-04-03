@@ -12,8 +12,8 @@ require.def("drontal/appui/components/gameboard",
         return Grid.extend({
             init: function () {
                 var self = this;
-                this._oldCol = 0;
-                this._oldRow = 0;
+                this._oldCol = 10;
+                this._oldRow = 10;
                 this._dalekManager = null;
 
                 self._super("gameboard", 20, 20);
@@ -25,7 +25,8 @@ require.def("drontal/appui/components/gameboard",
                 }
 
                 // Initialises doctor image
-                this.getWidgetAt(0,0).addClass("doctor");
+                this.getWidgetAt(10,10).addClass("doctor");
+                this.setActiveChildWidget();
 
                 // Add a 'beforerender' event listener to the component to do anything specific that might need to be done
                 // before rendering the component
