@@ -45,7 +45,7 @@ require.def('drontal/drontal',
                 };
             },
             
-            run: function() {
+            run: function() { 
                 // Called from run() as we need the framework to be ready beforehand.
                 this._setRootContainer();
                 // Create maincontainer and add mainmenu component to it

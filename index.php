@@ -131,6 +131,12 @@ echo $antie->getRootHtmlTag($device_configuration_decoded);
     <link rel="stylesheet" href="static/style/statusbar.css"/>
     <link rel="stylesheet" href="static/style/highscore.css"/>
 
+    <!-- Load application sound effects -->
+    <audio id="dalekgun" src="static/sounds/dalekgun.mp3" preload="auto"></audio>
+    <audio id="exterminate" src="static/sounds/exterminate.mp3" preload="auto"></audio>
+    <audio id="spacenoise" src="static/sounds/spacenoise.mp3" preload="auto"></audio>
+    <audio id="tardis" src="static/sounds/tardis.mp3" preload="auto"></audio>
+
     <!-- Expose device config to framework -->
     <script>
         var antie = {

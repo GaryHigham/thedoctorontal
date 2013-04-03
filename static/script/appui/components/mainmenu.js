@@ -25,6 +25,7 @@ require.def("drontal/appui/components/mainmenu",
 
                 var playGameButton = new Button();
                 playGameButton.addEventListener("select", function(evt){
+                    document.getElementById('dalekgun').play();
                     self.getCurrentApplication().pushComponent("maincontainer", "drontal/appui/components/gamecanvas");
                 });
                 playGameButton.appendChildWidget(new Label("Play game"));
