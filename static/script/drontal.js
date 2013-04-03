@@ -48,8 +48,8 @@ require.def('drontal/drontal',
             run: function() {
                 // Called from run() as we need the framework to be ready beforehand.
                 this._setRootContainer();
-                // Create maincontainer and add simple component to it
-                this.addComponentContainer("gamecanvas", "drontal/appui/components/gamecanvas");
+                // Create maincontainer and add mainmenu component to it
+                this.addComponentContainer("maincontainer", "drontal/appui/components/mainmenu");
             }
         });     
     }

@@ -22,7 +22,7 @@
  * Please contact us for an alternative licence
  */
 
-require.def("sampleapp/appui/formatters/simpleformatter",
+require.def("drontal/appui/formatters/simpleformatter",
     [
         "antie/formatter",
         "antie/widgets/label",

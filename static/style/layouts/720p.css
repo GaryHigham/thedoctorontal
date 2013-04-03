@@ -34,12 +34,12 @@
     background-image: url(../../img/bbc_background_720.png);
 }
 
-#helloWorldLabel, #welcomeLabel {
+#gameTitleLabel, #welcomeLabel {
     display: block;
     text-align: center;
 }
 
-#helloWorldLabel {
+#gameTitleLabel {
     font-size: 60px;
     padding-top: 228px;
     font-weight: bold;

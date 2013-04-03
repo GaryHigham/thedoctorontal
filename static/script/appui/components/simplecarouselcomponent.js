@@ -22,13 +22,13 @@
  * Please contact us for an alternative licence
  */
 
-require.def("sampleapp/appui/components/simplecarouselcomponent",
+require.def("drontal/appui/components/simplecarouselcomponent",
     [
         "antie/widgets/component",
         "antie/datasource",
         "antie/widgets/horizontalcarousel",
-        "sampleapp/appui/formatters/simpleformatter",
-        "sampleapp/appui/datasources/simplefeed",
+        "drontal/appui/formatters/simpleformatter",
+        "drontal/appui/datasources/simplefeed",
         "antie/widgets/label"
     ],
     function (Component, DataSource, HorizontalCarousel, SimpleFormatter, SimpleFeed, Label) {
