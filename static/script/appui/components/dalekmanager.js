@@ -19,7 +19,7 @@ require.def("drontal/appui/components/dalekmanager",
 
                 this.gameBoard = gameBoard;
                 this.level = 1;
-                this.dalekMultiplier = 10;
+                this.dalekMultiplier = 5;
 
                 // It is important to call the constructor of the superclass
                 this._super("dalekmanager");
@@ -36,7 +36,7 @@ require.def("drontal/appui/components/dalekmanager",
                 var dalekCount = this.dalekMultiplier * this.level;
                 for(var i = 0; i < dalekCount ; i++){
                     var uniquePosition = this.getUniqueCellPosition();
-                    this.dalekArray[uniquePosition.row, uniquePosition.col] = this.DALEK;
+                    this.dalekArray[uniquePosition.row][uniquePosition.col] = this.DALEK;
                     this.gameBoard.getWidgetAt(uniquePosition.row, uniquePosition.col).addClass("dalek");
                 }
 
@@ -55,14 +55,18 @@ require.def("drontal/appui/components/dalekmanager",
             },
 
             getUniqueCellPosition: function() {
-                var row = Math.floor(Math.random()*this.rows);
-                var col = Math.floor(Math.random()*this.cols);
 
-                while (this.dalekArray[row][col]!=this.EMPTY) {
-                    row = Math.floor(Math.random()*this.rows);
-                    col = Math.floor(Math.random()*this.cols);
+
+                var uniqueRow = Math.round(Math.random()*this.rows);
+                var uniqueCol = Math.round(Math.random()*this.cols);
+
+                while (this.dalekArray[uniqueRow][uniqueCol]!=this.EMPTY) {
+                    uniqueRow = Math.round(Math.random()*this.rows);
+                    uniqueCol = Math.round(Math.random()*this.cols);
+                    //alert(uniqueRow+" "+uniqueCol+" is taken");
                 }
-                return {row: row, col: col};
+                //alert(uniqueRow+" "+uniqueCol+" is being set");
+                return {row: uniqueRow, col: uniqueCol};
             },
 
             updateDaleks: function(drCol, drRow) {
@@ -72,20 +76,22 @@ require.def("drontal/appui/components/dalekmanager",
                         if(this.dalekArray[j][k]===this.DALEK){
                             this.dalekArray[j][k]=this.EMPTY;
                             this.gameBoard.getWidgetAt(j, k).removeClass("dalek");
-                            this.gameBoard.getWidgetAt(j, k).addClass("void");
-                          /*  var newCol, newRow;
-                            if (j<drCol)
-                                newCol = j+1;
-                            if (j>drCol)
-                                newCol = j-1;
+                           // this.gameBoard.getWidgetAt(j, k).addClass("void");
+                           var newCol = k;
+                           var newRow = j;
                             if (k<drRow)
-                                newRow = k+1;
+                                newCol = k+1;
                             if (k>drRow)
-                                newRow = k-1;
+                                newCol = k-1;
+                            if (j<drCol)
+                                newRow = j+1;
+                            if (j>drCol)
+                                newRow = j-1;
+
 
                             this.dalekArray[newRow][newCol]=this.DALEK;
-                            this.gameBoard.getWidgetAt(j, k).removeClass("dalek");
-                            this.gameBoard.getWidgetAt(newCol, newRow).addClass("dalek");    */
+                          //  this.gameBoard.getWidgetAt(j, k).removeClass("dalek");
+                            this.gameBoard.getWidgetAt(newRow, newCol).addClass("dalek");
                         }
                     }
                 }
