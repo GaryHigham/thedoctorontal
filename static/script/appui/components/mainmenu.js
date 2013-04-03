@@ -31,7 +31,7 @@ require.def("drontal/appui/components/mainmenu",
 
                 var highScoresButton = new Button();
                 highScoresButton.addEventListener("select", function(evt){
-                    self.getCurrentApplication().pushComponent("maincontainer", "drontal/appui/components/simplecarouselcomponent");
+                    self.getCurrentApplication().pushComponent("maincontainer", "drontal/appui/components/highscoretable");
                 });
                 highScoresButton.appendChildWidget(new Label("View high scores"));
 
