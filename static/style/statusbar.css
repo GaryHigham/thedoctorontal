@@ -1,6 +1,24 @@
+#statusbar {
+    background-color: palegreen;
+    display: inline-block;
+    padding: 5px;
+    width: 75%;
+}
+
 #statusbar span.statusbar-item {
-    width: 20%;
     color: forestgreen;
     float: left;
-    font-size: 20px;
+    width: 20%
+}
+
+#gameTitle {
+    font-weight: bold;
+}
+
+#debugbar {
+    display: inline-block;
+    font-size: 12px;
+    margin: 0 5px;
+    vertical-align: top;
+    width: 20%;
 }

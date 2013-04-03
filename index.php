@@ -40,7 +40,7 @@ if (!file_exists('antie/php/antieframework.php')) {
 require('antie/php/antieframework.php');
 
 // Enable javascript cache busting (this should be disabled in production mode)
-$javascript_cache_busting = true;
+$javascript_cache_busting = false;
 
 // Set up application ID and path to framework configuration directory
 $application_id = "drontal";
@@ -114,6 +114,11 @@ echo $antie->getRootHtmlTag($device_configuration_decoded);
             <?php endif; ?>
             callback: function() {}
         };
+
+        var debug = {
+            model: "<?php echo $device_model ?>",
+            brand: "<?php echo $device_brand ?>"
+        };
     </script>
 
     <!-- Load require.js -->
@@ -122,6 +127,15 @@ echo $antie->getRootHtmlTag($device_configuration_decoded);
     <!-- Load application base style sheet -->
     <link rel="stylesheet" href="static/style/base.css"/>
     <link rel="stylesheet" href="static/style/cell.css"/>
+    <link rel="stylesheet" href="static/style/gamecanvas.css"/>
+    <link rel="stylesheet" href="static/style/statusbar.css"/>
+    <link rel="stylesheet" href="static/style/highscore.css"/>
+
+    <!-- Load application sound effects -->
+    <audio id="dalekgun" src="static/sounds/dalekgun.mp3" preload="auto"></audio>
+    <audio id="exterminate" src="static/sounds/exterminate.mp3" preload="auto"></audio>
+    <audio id="spacenoise" src="static/sounds/spacenoise.mp3" preload="auto"></audio>
+    <audio id="tardis" src="static/sounds/tardis.mp3" preload="auto"></audio>
 
     <!-- Expose device config to framework -->
     <script>

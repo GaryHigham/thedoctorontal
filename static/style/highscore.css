@@ -1,0 +1,25 @@
+#highscoretable {
+	text-align: center;
+	margin: 150px auto;
+}
+
+.highscorecomponent {
+	width: 50%;
+	margin: auto;
+	padding: 10px;
+	line-height: 25px;
+}
+
+.highscorecomponent span {
+	padding-right: 25px;
+}
+
+.highscoretabletitle {
+	font-weight: bold;
+	font-size: 24pt;
+
+	width: 50%;
+	margin: auto;
+	padding: 10px;
+	line-height: 25px;
+}

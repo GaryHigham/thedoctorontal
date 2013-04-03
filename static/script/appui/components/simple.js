@@ -22,7 +22,7 @@
  * Please contact us for an alternative licence
  */
 
-require.def("sampleapp/appui/components/simple",
+require.def("drontal/appui/components/simple",
     [
         "antie/widgets/component",
         "antie/widgets/button",
@@ -50,14 +50,14 @@ require.def("sampleapp/appui/components/simple",
                 // Create the buttons and add select event listeners
                 var carouselButton = new Button();
                 carouselButton.addEventListener("select", function(evt){
-                    self.getCurrentApplication().pushComponent("maincontainer", "sampleapp/appui/components/simplecarouselcomponent");
+                    self.getCurrentApplication().pushComponent("maincontainer", "drontal/appui/components/simplecarouselcomponent");
                 });
                 carouselButtonLabel = new Label("Simple Carousel Example");
                 carouselButton.appendChildWidget(carouselButtonLabel);
 
                 var playerButton = new Button();
                 playerButton.addEventListener("select", function(evt){
-                    self.getCurrentApplication().pushComponent("maincontainer", "sampleapp/appui/components/simplevideocomponent");
+                    self.getCurrentApplication().pushComponent("maincontainer", "drontal/appui/components/simplevideocomponent");
                 });
                 playerButton.appendChildWidget(new Label("Simple Video Player Example"));
 
