@@ -14,7 +14,7 @@ require.def("drontal/appui/components/gameboard",
                 this._oldCol = 0;
                 this._oldRow = 0;
 
-                self._super("gameboard", 30, 30);
+                self._super("gameboard", 20, 20);
 
                 for(var i = 0; i < this._cols; i++){
                     for(var j = 0; j < this._rows; j++){
