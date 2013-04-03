@@ -22,6 +22,9 @@ require.def("drontal/appui/components/gameboard",
                     }
                 }
 
+                // Initialises doctor image
+                this.getWidgetAt(0,0).addClass("doctor");
+
                 // Add a 'beforerender' event listener to the component to do anything specific that might need to be done
                 // before rendering the component
                 this.addEventListener("beforerender", function (evt) {
@@ -42,8 +45,16 @@ require.def("drontal/appui/components/gameboard",
 
             // Fired when 'Enter' or 'Select' is pushed
             _onSelectCell: function(evt){
+                // Removes Doctor image from old cell
+                this.getWidgetAt(this._oldCol, this._oldRow).removeClass("doctor");
+
+                // Updates old location coords
                 this._oldCol = this._selectedCol;
                 this._oldRow = this._selectedRow;
+
+                // Adds Doctor image to new cell
+                this.getWidgetAt(this._selectedCol, this._selectedRow).addClass("doctor");
+
                 alert("New Doctor position!");
             },
 

@@ -9,10 +9,14 @@
     display: inline-block;
 }
 .cell.buttonFocussed{
-    background-image: url('../img/core/tardisdr.png');
-    background-color: transparent;
+    /*background-image: url('../img/core/tardisdr.png');*/
+    background-color: yellow;
 }
 
 .cell.button{
 
+}
+
+.doctor{
+    background-image: url('../img/core/tardisdr.png');
 }
