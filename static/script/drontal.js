@@ -50,6 +50,10 @@ require.def('drontal/drontal',
                 this._setRootContainer();
                 // Create maincontainer and add mainmenu component to it
                 this.addComponentContainer("maincontainer", "drontal/appui/components/mainmenu");
+
+                this.addEventListener('audioevent', function(e) {
+                    document.getElementById(e.getAudioSampleName()).play();
+                });
             }
         });     
     }

@@ -5,7 +5,7 @@ require.def("drontal/appui/components/gamecanvas",
         "drontal/appui/components/gameboard",
         "drontal/appui/components/debugbar",
         "drontal/appui/components/dalekmanager",
-        "drontal/appui/components/highscoretable"
+        "drontal/appui/components/highscoretable",
     ],
     function (Component, StatusBar, GameBoard, DebugBar, DalekManager, HighScoreTable) {
 

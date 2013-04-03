@@ -3,9 +3,10 @@ require.def("drontal/appui/components/mainmenu",
         "antie/widgets/component",
         "antie/widgets/button",
         "antie/widgets/label",
-        "antie/widgets/verticallist"
+        "antie/widgets/verticallist",
+        'drontal/appui/events/audioevent'
     ],
-    function (Component, Button, Label, VerticalList) {
+    function (Component, Button, Label, VerticalList, AudioEvent) {
 
         // All components extend Component
         return Component.extend({
@@ -24,8 +25,7 @@ require.def("drontal/appui/components/mainmenu",
                 this.appendChildWidget(welcomeLabel);
 
                 var playGameButton = new Button();
-                playGameButton.addEventListener("select", function(evt){
-                    document.getElementById('dalekgun').play();
+                playGameButton.addEventListener("select", function(evt){ 
                     self.getCurrentApplication().pushComponent("maincontainer", "drontal/appui/components/gamecanvas");
                 });
                 playGameButton.appendChildWidget(new Label("Play game"));

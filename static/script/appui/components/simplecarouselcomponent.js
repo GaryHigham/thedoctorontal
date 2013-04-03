@@ -29,7 +29,8 @@ require.def("drontal/appui/components/simplecarouselcomponent",
         "antie/widgets/horizontalcarousel",
         "drontal/appui/formatters/simpleformatter",
         "drontal/appui/datasources/simplefeed",
-        "antie/widgets/label"
+        "antie/widgets/label",
+        'drontal/appui/events/audioevent'
     ],
     function (Component, DataSource, HorizontalCarousel, SimpleFormatter, SimpleFeed, Label) {
 
