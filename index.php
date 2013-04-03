@@ -129,6 +129,7 @@ echo $antie->getRootHtmlTag($device_configuration_decoded);
     <link rel="stylesheet" href="static/style/cell.css"/>
     <link rel="stylesheet" href="static/style/gamecanvas.css"/>
     <link rel="stylesheet" href="static/style/statusbar.css"/>
+    <link rel="stylesheet" href="static/style/highscore.css"/>
 
     <!-- Expose device config to framework -->
     <script>

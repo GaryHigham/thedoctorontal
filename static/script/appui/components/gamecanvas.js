@@ -3,9 +3,9 @@ require.def("drontal/appui/components/gamecanvas",
         "antie/widgets/component",
         "drontal/appui/components/statusbar",
         "drontal/appui/components/gameboard",
-        "drontal/appui/components/debugbar"
+        "drontal/appui/components/debugbar",
     ],
-    function (Component, StatusBar, GameBoard, DebugBar) {
+    function (Component, StatusBar, GameBoard, DebugBar, HighScoreTable) {
 
         // All components extend Component
         return Component.extend({
