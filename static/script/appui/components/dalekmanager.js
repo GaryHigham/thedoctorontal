@@ -12,14 +12,14 @@ require.def("drontal/appui/components/dalekmanager",
                 this.DALEK = 1;
                 this.JUNK = 2;
 
-                this.rows = gameBoard._rows;
                 this.cols = gameBoard._cols;
+                this.rows = gameBoard._rows;
 
-                this.dalekArray = new Array();
+                this.dalekArray = [];
 
                 this.gameBoard = gameBoard;
                 this.level = 1;
-                this.dalekMultiplier = 5;
+                this.dalekMultiplier = 4;
 
                 // It is important to call the constructor of the superclass
                 this._super("dalekmanager");
@@ -32,77 +32,73 @@ require.def("drontal/appui/components/dalekmanager",
             },
 
             generateDaleks: function () {
-                this.generateDalekArray();
+                this.dalekArray = this.generateDalekArray();
                 var dalekCount = this.dalekMultiplier * this.level;
-                for(var i = 0; i < dalekCount ; i++){
+                for (var i = 0; i < dalekCount ; i++){
                     var uniquePosition = this.getUniqueCellPosition();
-                    this.dalekArray[uniquePosition.row][uniquePosition.col] = this.DALEK;
-                    this.gameBoard.getWidgetAt(uniquePosition.row, uniquePosition.col).addClass("dalek");
+                    this.dalekArray[uniquePosition.col][uniquePosition.row] = this.DALEK;
+                    this.gameBoard.getWidgetAt(uniquePosition.col, uniquePosition.row).addClass("dalek");
                 }
-
             },
 
-            generateDalekArray: function() {
-                this.dalekArray = new Array(this.rows);
+            generateDalekArray: function () {
+                var arr = new Array(this.cols);
                 for (var i = 0 ; i < this.cols ; i++) {
-                    this.dalekArray[i] = new Array(this.cols);
+                    arr[i] = new Array(this.rows);
                 }
                 for (var j=0 ; j < this.cols ; j++) {
                     for (var k = 0 ; k < this.rows ; k++) {
-                        this.dalekArray[j][k] = this.EMPTY;
+                        arr[j][k] = this.EMPTY;
                     }
                 }
+                return arr;
             },
 
             getUniqueCellPosition: function() {
+                var uniqueCol = Math.floor(Math.random()*this.cols);
+                var uniqueRow = Math.floor(Math.random()*this.rows);
 
-
-                var uniqueRow = Math.round(Math.random()*this.rows);
-                var uniqueCol = Math.round(Math.random()*this.cols);
-
-                while (this.dalekArray[uniqueRow][uniqueCol]!=this.EMPTY) {
-                    uniqueRow = Math.round(Math.random()*this.rows);
-                    uniqueCol = Math.round(Math.random()*this.cols);
+                while (this.dalekArray[uniqueCol][uniqueRow]!=this.EMPTY) {
+                    uniqueCol = Math.floor(Math.random()*this.cols);
+                    uniqueRow = Math.floor(Math.random()*this.rows);
                 }
-                return {row: uniqueRow, col: uniqueCol};
+                return {col: uniqueCol, row: uniqueRow};
             },
 
             updateDaleks: function(drCol, drRow) {
+                var tempDalekArray = this.generateDalekArray();
                 for (var j=0 ; j < this.cols ; j++) {
                     for (var k = 0 ; k < this.rows ; k++) {
                         if(this.dalekArray[j][k]===this.DALEK){
-                            this.dalekArray[j][k]=this.EMPTY;
+                            tempDalekArray[j][k]=this.EMPTY;
                             this.gameBoard.getWidgetAt(j, k).removeClass("dalek");
-                            var newCol = k;
-                            var newRow = j;
-                            if (k<drRow)
-                                newCol = k+1;
-                            if (k>drRow)
-                                newCol = k-1;
-                            if (j<drCol)
-                                newRow = j+1;
-                            if (j>drCol)
-                                newRow = j-1;
+                            var newCol = j;
+                            var newRow = k;
+                            if (j<drCol){
+                                newCol = j+1;
+                            }else if (j>drCol){
+                                newCol = j-1;
+                            }
+                            if (k<drRow){
+                                newRow = k+1;
+                            }else if (k>drRow){
+                                newRow = k-1;
+                            }
 
                             // If another Dalek or junk
-                            if(this.dalekArray[newCol][newRow]===this.DALEK || this.dalekArray[newCol][newRow]===this.JUNK){
-                                this.dalekArray[newCol][newRow]=this.JUNK;
+                            if(tempDalekArray[newCol][newRow]===this.DALEK || this.gameBoard.getWidgetAt(newCol, newRow).hasClass("junk")){
+                                tempDalekArray[newCol][newRow]=this.JUNK;
                                 this.gameBoard.getWidgetAt(j, k).removeClass("dalek");
-                                this.gameBoard.getWidgetAt(newRow, newCol).addClass("junk");
+                                this.gameBoard.getWidgetAt(newCol, newRow).addClass("junk");
                             }else{
-                                this.dalekArray[newRow][newCol]=this.DALEK;
-                                this.gameBoard.getWidgetAt(newRow, newCol).addClass("dalek");
+                                tempDalekArray[newCol][newRow]=this.DALEK;
+                                this.gameBoard.getWidgetAt(newCol, newRow).addClass("dalek");
                             }
                         }
                     }
                 }
-            },
-
-            setDoctor: function(row, col) {
-
+                this.dalekArray = tempDalekArray;
             }
-
-
         });
     }
 );
